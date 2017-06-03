@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>changecolor</title>
+    <style>
+      body {
+          text-align:center;
+      }
+
+    </style>
+</head>
+<body>
+    <h2>选取一种颜色:</h2>
+    <input type="color" name="color" id="colors" />
+</body>
+<script>
+ var colors = document.getElementById("colors");
+
+  colors.oninput = function(){
+     var c = colors.value;
+     document.body.style.background = c;
+  }
+</script>
+</html>
