@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        background: #000;
+    }
+    ul,li {
+        list-style:none;
+    }
+    .carousel {
+        width: 800px;
+        height: 200px;
+        position:relative;
+        perspective:1200px;
+        margin:200px auto;
+    }
+    .carousel ul {
+        width: 300px;
+        height: 200px;
+        transform-style:preserve-3d;
+        position:absolute;
+        left:50%;
+        margin-left:-150px;
+        transform: rotateX(-8deg);
+        transition: transform 0.5s;
+    }
+    .carousel ul li {
+        position:absolute;
+        width: 300px;
+        height: 200px;
+    }
+    /* 加遮盖 */
+    .carousel ul li::before{
+        content:"";
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        width: 300px;
+        height: 200px;
+        background: rgba(0,0,0,0.7);
+    }
+    .carousel ul li.light::before {
+         background:rgba(0,0,0,0);
+    }
+    ul li img {
+        width: 300px;
+        height: 200px;
+    }
+    .btns a {
+        width: 40px;
+        height: 40px;
+        position:absolute;
+        top:50%;
+        margin-top: -20px;
+        background: orange;
+        border-radius: 50%;
+    }
+    .btns a:hover {
+         background: red;
+    }
+    .btns a#left {
+        left: 0px;
+    }
+    .btns a#right{
+        right:0px;
+     }
+    ul li:nth-child(1){transform: rotateY(0deg) translateZ(300px); }
+    ul li:nth-child(2){transform: rotateY(60deg) translateZ(300px); }
+    ul li:nth-child(3){transform: rotateY(120deg) translateZ(300px); }
+    ul li:nth-child(4){transform: rotateY(180deg) translateZ(300px); }
+    ul li:nth-child(5){transform: rotateY(240deg) translateZ(300px); }
+    ul li:nth-child(6){transform: rotateY(300deg) translateZ(300px); }
+    </style>
+</head>
+<body>
+  <div class="carousel">
+       <ul>
+           <li class = "light"><img src="images/1.jpg" alt="" /></li>
+           <li class = "light"><img src="images/2.jpg" alt="" /></li>
+           <li ><img src="images/3.jpg" alt="" /></li>
+           <li><img src="images/4.jpg" alt="" /></li>
+           <li><img src="images/5.jpg" alt="" /></li>
+           <li class = "light"><img src="images/6.jpg" alt="" /></li>
+       </ul>
+       <div class = "btns">
+             <a href ="#" id ="left"></a>
+             <a href ="#" id ="right"></a>
+       </div>
+  </div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+ var i = 0;
+// 类数组
+ var arrClass = ["light","light","","","","light"];
+
+ $("#right").click(function(){
+     arrClass.unshift(arrClass.pop());
+     for(var j=0;j<arrClass.length;j++){
+         $("ul li").eq(j).attr("class",arrClass[j]);
+     }
+     i++;
+     $("ul").css("transform","rotateX(-8deg) rotateY("+ -60*i+"deg)");
+ });
+ $("#left").click(function(){
+    arrClass.push(arrClass.shift());
+    for(var j=0;j<arrClass.length;j++){
+         $("ul li").eq(j).attr("class",arrClass[j]);
+    }
+    i--;
+    $("ul").css("transform","rotateX(-8deg) rotateY("+ -60*i+"deg)");
+ });
+
+</script>
+</html>

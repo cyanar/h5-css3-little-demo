@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+       *{
+           margin: 0;
+           padding: 0;
+       }
+       ol, ul ,li{list-style: none;}
+       a {
+         text-decoration:none;
+       }
+       nav {
+          width: 800px;
+          height: 80px;
+          background: #eee;
+          margin: 50px auto;
+       }
+       nav ul li {
+          float:left;
+          width: 200px;
+          height: 80px;
+          position:relative;
+          perspective:3000px;
+       }
+       nav ul li a {
+          display: block;
+          width: 200px;
+          height: 80px;
+          text-align: center;
+          line-height: 80px;
+          transform-style: preserve-3d;
+          color: #fff;
+          font-size: 20px;
+          transition: all 0.5s ease 0s;
+       }
+       nav ul li a div {
+          width: 200px;
+          height: 80px;
+          position:absolute;
+          top:0;
+          left:0;
+       }
+       nav ul li a .front {
+          background-color: rgba(144,215,130,1);
+          transform: translateZ(40px);
+       }
+       nav ul li a .bottom {
+          background-color: rgba(49,68,155,1);
+          transform: rotateX(-90deg) translateZ(40px);
+       }
+       nav ul li a:hover {
+          transform: rotateX(90deg);
+       }
+    </style>
+</head>
+<body>
+  <nav>
+       <ul>
+           <li>
+              <a href="#">
+                   <div class="front">主页</div>
+                   <div class="bottom">home</div>
+              </a>
+           </li>
+           <li>
+                <a href="#">
+                   <div class="front">服务</div>
+                   <div class="bottom">services</div>
+              </a>
+           </li>
+           <li> <a href="#">
+                   <div class="front">产品</div>
+                   <div class="bottom">products</div>
+              </a></li>
+           <li> <a href="#">
+                   <div class="front">联系</div>
+                   <div class="bottom">contact</div>
+              </a></li>
+       </ul>
+  </nav>
+</body>
+</html>
